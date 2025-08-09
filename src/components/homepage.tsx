@@ -1,6 +1,8 @@
 "use client";
 
 import {useEffect, useRef} from "react";
+import Link from "next/link";
+import Overview from "@/components/overview";
 
 export default function HomePageContainer() {
 
@@ -18,13 +20,28 @@ export default function HomePageContainer() {
         return () => window.removeEventListener("mousemove", onMouseMove);
     }, []);
 
+
+
     return (
-        <div className="h-screen relative">
+        <div className="relative">
             <div
                 ref={spotlightRef}
                 className="pointer-events-none fixed inset-0 z-30 transition duration-300 lg:absolute"
                 style={{ background: "radial-gradient(circle 600px at 50% 50%, rgba(29,78,216,0.15), transparent 80%)" }}
             />
+
+            <div className={"mx-auto min-h-screen max-w-screen-xl px-6 py-12 font-sans"}>
+                <div className={"flex justify-between"}>
+                    <Overview/>
+                    {/* main body ui */}
+                    <div className={"flex flex-2/3"}>
+                        About me description
+                    </div>
+                </div>
+
+            </div>
+
+
         </div>
     );
 }
