@@ -34,9 +34,7 @@ export default function HomePageContainer() {
                 <div className={"flex justify-between"}>
                     <Overview/>
                     {/* main body ui */}
-                    <div className={"flex flex-2/3"}>
-                        About me description
-                    </div>
+                    <div className={"flex flex-2/3 text-slate-200"}></div>
                 </div>
 
             </div>
