@@ -1,10 +1,11 @@
 import AboutSection from "@/components/details/about";
 import {useEffect, useRef} from "react";
+import ExperienceSection from "@/components/details/experience";
 
 const thresholdConfig = {
     root: null,
     rootMargin: "0px",
-    threshold: 0.5
+    threshold: 0.4
 }
 
 export default function DetailsContainer({setActiveSection}: { setActiveSection: (section: string) => void }) {
@@ -29,6 +30,7 @@ export default function DetailsContainer({setActiveSection}: { setActiveSection:
     return (
         <main id={"content"} className={"pt-24 lg:w-[52%] lg:py-24"}>
             <AboutSection ref={sectionRef}/>
+            <ExperienceSection ref={sectionRef}/>
         </main>
     )
 }
