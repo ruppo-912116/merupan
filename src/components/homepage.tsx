@@ -1,12 +1,14 @@
 "use client";
 
-import {useEffect, useRef} from "react";
-import Link from "next/link";
+import {useEffect, useRef, useState} from "react";
 import Overview from "@/components/overview";
+import DetailsContainer from "@/components/details/details-container";
 
 export default function HomePageContainer() {
 
     const spotlightRef = useRef<HTMLDivElement>(null);
+
+    const [activeSection, setActiveSection] = useState<string>("about");
 
     useEffect(() => {
         function onMouseMove(e: MouseEvent) {
@@ -32,9 +34,8 @@ export default function HomePageContainer() {
 
             <div className={"mx-auto min-h-screen max-w-screen-xl px-6 py-12 font-sans"}>
                 <div className={"flex justify-between"}>
-                    <Overview/>
-                    {/* main body ui */}
-                    <div className={"flex flex-2/3 text-slate-200"}></div>
+                    <Overview activeSection={activeSection}/>
+                    <DetailsContainer setActiveSection={setActiveSection}/>
                 </div>
 
             </div>
