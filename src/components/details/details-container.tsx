@@ -1,6 +1,7 @@
 import AboutSection from "@/components/details/about";
 import {useEffect, useRef} from "react";
 import ExperienceSection from "@/components/details/experience";
+import CVLink from "@/components/details/cv-link";
 
 const thresholdConfig = {
     root: null,
