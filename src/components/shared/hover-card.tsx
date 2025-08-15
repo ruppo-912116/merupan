@@ -3,8 +3,6 @@ import React, {forwardRef, JSX} from "react";
 type ElementTag = keyof JSX.IntrinsicElements;
 
 type HoverCardProps<T extends ElementTag = "div"> = {
-    /** element tag to render as */
-    as?: T;
     /** extra classes for the outer wrapper (e.g., grid cols, gaps) */
     className?: string;
     /** tailwind for the overlay if you want to tweak */
@@ -13,24 +11,16 @@ type HoverCardProps<T extends ElementTag = "div"> = {
     insetClassName?: string;
     /** children you want inside the card */
     children: React.ReactNode;
-} & Omit<React.ComponentPropsWithoutRef<T>, "as" | "children" | "className">;
+} & React.ComponentPropsWithoutRef<"div">;
 
 /**
  * Reusable hoverable wrapper with background overlay + opacity choreography.
  * Put it inside a parent with `group/list` if you want sibling dimming.
  */
-export const HoverCard = forwardRef<HTMLElement, HoverCardProps>((props, ref) => {
-    const {
-        as,
-        className = "",
-        overlayClassName = "",
-        insetClassName = "",
-        children,
-        ...rest
-    } = props as HoverCardProps; // simple cast for union props
-
-    const Comp = (as || "div") as ElementTag;
-
+export const HoverCard = forwardRef<
+    HTMLDivElement,
+    HoverCardProps
+>(({ className = "", overlayClassName = "", insetClassName = "", children, ...rest }, ref) => {
     const outer = [
         // base
         "group relative transition-all",
@@ -60,9 +50,9 @@ export const HoverCard = forwardRef<HTMLElement, HoverCardProps>((props, ref) =>
         .join(" ");
 
     return (
-        <div ref={ref as any} className={outer} {...(rest as any)}>
+        <div ref={ref} className={outer} {...rest}>
             {/* hover background */}
-            <div className={overlay} aria-hidden="true" />
+            <div className={overlay} aria-hidden="true"/>
             {/* content sits above overlay */}
             <div className="z-10 w-full">{children}</div>
         </div>

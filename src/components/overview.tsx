@@ -31,8 +31,6 @@ export default function Overview({activeSection}: { activeSection: string }) {
         }
     ]
 
-    console.log(activeSection)
-
     return (
         <header className={"lg:max-h-screen lg:sticky lg:top-0 lg:flex lg:flex-col lg:justify-between lg:py-24"}>
             <div>

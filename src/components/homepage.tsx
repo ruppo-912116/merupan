@@ -17,7 +17,7 @@ export default function HomePageContainer() {
             const el = spotlightRef.current;
             const rect = el.getBoundingClientRect();
             const x = e.clientX - rect.left;
-            const y = e.clientY - rect.top + el.scrollHeight;
+            const y = e.clientY - rect.top;
             spotlightRef.current.style.background =
                 `radial-gradient(circle 600px at ${x}px ${y}px, rgba(29,78,216,0.15), transparent 80%)`;
         }
